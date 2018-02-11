@@ -1,0 +1,226 @@
+/*!
+*
+* 修改header
+*
+*/
+
+.notebook_app {
+    overflow-y: hidden;
+    font-family: "Microsoft YaHei";
+    #header {
+        box-shadow:12px 1px 0px 0px rgba(87, 87, 87, 0.2);
+        border-bottom: 1px solid rgba(87, 87, 87, 0.2);
+    }
+}
+
+body > #header {
+    #header-container {
+        display:none;
+    }
+    .header-bar {
+        display:none;
+    }
+}
+
+#menubar {
+    .navbar {
+        border-top:none;
+        border-radius: none!important;
+        border-color: #fff;
+    }
+    .navbar-collapse {
+        background: #fff;
+        border-color:#fff;
+    }
+    .navbar-nav {
+        display:none;
+    }
+}
+
+#maintoolbar {
+    position:absolute;
+    bottom: -6px;
+    .toolbar {
+        .btn-group {
+            .btn {
+                padding: 5px 10px;
+            }
+        }
+    }
+}
+
+/*!
+* 隐藏现有导航栏按钮操作
+*/
+
+
+
+/*!
+* 改变代码块的样式，与实验楼想匹配
+*/
+
+.code_cell .CodeMirror {
+    font-size: 16px;
+    background: #000;
+    color: #fff;
+    line-height: 2em;
+}
+
+div.text_cell {
+    .inner_cell {
+        font-size: 16px;
+        line-height: 2em;
+    }
+    .rendered_html {
+        font-weight: 200;
+    }
+}
+
+.rendered_html p code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    font-size: 90%;
+}
+
+.rendered_html code,
+.rendered_html pre {
+    color: #c7254e;
+    background-color: #f9f2f4;
+}
+
+/* 代码块keyword颜色 */
+.cm-s-ipython span.cm-keyword {
+    color: #f92672;
+}
+/* 代码块数字颜色 */
+.cm-s-ipython span.cm-number {
+    color: #ae81ff;
+    font-weight: bold;
+}
+/* 代码块string颜色 */
+.cm-s-ipython span.cm-string {
+    color: #e6db74;
+}
+
+.cm-s-ipython span.cm-operator {
+    color: #75715e;
+}
+
+.cm-s-ipython span.cm-variable {
+    color: #e6db74;
+}
+
+/* 修改光标的颜色 */
+.CodeMirror-cursor {
+    border-left: 1.4px solid #fff;
+}
+
+/* 代码块工具栏 */
+#notebook {
+    div.code_cell,
+    div.text_cell {
+        position:relative;
+        margin-top: 15px;
+        .code-tools {
+            position: absolute;
+            top: -20px;
+            right: 6px;
+            height: 25px;
+            background-color: #fff;
+            z-index: 10;
+            .tool-container {
+                display:inline-block;
+                padding: 1px 5px;
+                border: 1px solid rgb(248, 248, 248);
+                font-size: 10px;
+                &.add-cell {
+                    span {
+                        background-color: #08bf91;
+                        color: #fff;
+                        border-radius: 4px;
+                        &:hover,
+                        &:focus {
+                            color: #fff;
+                        }
+                    }
+                }
+                &.delete-cell {
+                    span {
+                        color: #ff5c5d;
+                        font-size: 16px;
+                        &:hover,
+                        &:focus {
+                            color: #ff5c5d;
+                        }
+                    }
+                }
+                span {
+                    display: inline-block;
+                    padding: 0 6px;
+                    font-weight: bold;
+                    &:hover,
+                    &:focus {
+                        color: #08bf91;
+                    }
+                    &.select {
+                        font-weight:bold;
+                    }
+                }
+            }
+        }
+        .run-code-btn {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 30px;
+            background-color: #fff;
+            font-size: 30px;
+            color: #08bf91;
+        }
+        &.selected {
+            .code-tools {
+                display: block;
+            }
+            .run-code-btn {
+                display: block;
+            }
+        }
+
+        &.unselected {
+            .code-tools {
+                display: none;
+            }
+            .run-code-btn {
+                display: none;
+            }
+        }
+
+        &.text_cell {
+            .code-tools {
+                top: -27px;
+            }
+            span.markdown-btn {
+                color: #08bf91;
+            }
+            span.code-btn {
+                color: #333;
+            }
+        }
+
+        &.code_cell {
+            span.markdown-btn {
+                color: #333;
+            }
+            span.code-btn {
+                color: #08bf91;
+            }
+        }
+
+    }
+
+
+}
