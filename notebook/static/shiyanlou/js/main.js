@@ -11,7 +11,6 @@ requirejs([
         let codeCell = null;
         let textCell = null;
 
-
         let interval = setInterval(()=>{
 
             codeCell = $('.code_cell');
@@ -71,6 +70,7 @@ requirejs([
                 //确保能获取到值后再调用
                 runCode(html,runCodeHtml);
                 addCell(html,runCodeHtml);
+                moveUpDown();
                 deleteCell();
                 changeType(html);
             }
@@ -83,7 +83,6 @@ requirejs([
 
     // 添加代码执行按钮
     function runCode(codeCellHtml,runCodeHtml) {
-
 
         $('#run_int .btn').each(function(i,runbtn) {
 
@@ -160,6 +159,7 @@ requirejs([
 
     }
 
+
     // delete code_cell or text_cell
     function deleteCell() {
 
@@ -193,6 +193,7 @@ requirejs([
             $('#cell_type').val('markdown');
             $("#cell_type").change();
             getJupyterElement();
+
         })
 
         $('.code-btn').on('click', function() {
@@ -200,6 +201,7 @@ requirejs([
             $('#cell_type').val('code');
             $("#cell_type").change();
             getJupyterElement();
+
         })
     }
 })
