@@ -70,7 +70,6 @@ requirejs([
                 //确保能获取到值后再调用
                 runCode(html,runCodeHtml);
                 addCell(html,runCodeHtml);
-                moveUpDown();
                 deleteCell();
                 changeType(html);
             }
