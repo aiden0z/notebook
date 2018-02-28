@@ -72,10 +72,17 @@ requirejs([
                 addCell(html,runCodeHtml);
                 deleteCell();
                 changeType(html);
+                downloadCodes();
             }
         }, 300);
 
     }
+
+    let downloadCode = `<div class="download-code">
+            <span>下载代码</span>
+        </div>`
+
+    $('#modal_indicator').before(downloadCode);
 
     getJupyterElement();
 
@@ -83,76 +90,35 @@ requirejs([
     // 添加代码执行按钮
     function runCode(codeCellHtml,runCodeHtml) {
 
-        $('#run_int .btn').each(function(i,runbtn) {
+        $('.run-code-btn').off('click').on('click',function () {
 
-            let _this = this;
-            let runTitles = $(this).attr('title').split(" ");
+            $('#run_cell_select_below').click();
 
-            runTitles.forEach( (run_title, j) => {
+            getJupyterElement();
 
-                if(run_title == 'Run') {
-
-                    $('.run-code-btn').on('click',function () {
-
-
-                        // 判断文档最后一个代码块执行时，为自动新增的代码块添加工具栏
-
-                        let nextLength = $(this).parent().parent().next().length;
-
-                        $(_this).trigger('click');
-
-                        //codecell add tools when after run code
-                        if(nextLength == 0) {
-
-                            $(this).parent().parent().next().append(codeCellHtml);
-                            $(this).parent().parent().next().find('.input').append(runCodeHtml);
-                        }
-
-                    })
-                }
-            });
         })
     }
 
     //add text_cell or code_cell
     function addCell(codeCellHtml,runCodeHtml) {
 
-        let addTimes = 0;
 
-        $('.add-cell-before').on('click',function() {
+        $('.add-cell-before').off('click').on('click',function(e) {
+            e.stopPropagation();
 
-            addTimes ++;
-            if(addTimes <= 1) {
+            $('#insert_cell_above').click();
 
-                $('#insert_above_below .btn').trigger('click');
+            getJupyterElement();
 
-                let moveBtn = $('#move_up_down .btn');
-
-                moveBtn.each( function(i, moveDom) {
-
-                    let _this = this;
-                    let titles = $(this).attr('title').split(" ");
-
-                    titles.forEach( (title, j) => {
-
-                        if(title == 'up') {
-
-                            $(_this).trigger('click');
-
-                        }
-                    });
-                });
-                getJupyterElement();
-
-            }
         })
 
-        $('.add-cell-after').on('click',function() {
-            addTimes ++;
-            if(addTimes <= 1) {
-                $('#insert_above_below .btn').trigger('click');
-                getJupyterElement();
-            }
+        $('.add-cell-after').off('click').on('click',function(e) {
+            e.stopPropagation();
+
+            $('#insert_cell_below').click();
+
+            getJupyterElement();
+
 
         })
 
@@ -162,45 +128,37 @@ requirejs([
     // delete code_cell or text_cell
     function deleteCell() {
 
-        let deleteBtn = $('#cut_copy_paste .btn');
+        $('.delete-cell-btn').off('click').on('click',function() {
 
-        deleteBtn.each( function(i, moveDom) {
+            $('#delete_cell').click();
 
-            let _this = this;
-            let titles = $(this).attr('title').split(" ");
+            getJupyterElement();
 
-            titles.forEach( (title, j) => {
-
-                if(title == 'cut') {
-
-                    $('.delete-cell-btn').on('click',function() {
-                        $(this).parent().parent().parent().next().focus();
-                        $(this).parent().parent().parent().remove();
-
-                    })
-                }
-            });
         });
     }
 
 
     //change type of cell, MarkDown or Code
     function changeType(codeCellHtml) {
-
-        $('.markdown-btn').on('click', function() {
-
-            $('#cell_type').val('markdown');
-            $("#cell_type").change();
+        $('.markdown-btn').off('click').on('click', function() {
+            $('#to_markdown').click();
             getJupyterElement();
 
         })
 
-        $('.code-btn').on('click', function() {
+        $('.code-btn').off('click').on('click', function() {
 
-            $('#cell_type').val('code');
-            $("#cell_type").change();
+            $('#to_code').click();
             getJupyterElement();
 
+        })
+    }
+
+    function downloadCodes() {
+
+        $('.download-code').off('click').on('click',function() {
+
+            $('#download_ipynb').click();
         })
     }
 })
