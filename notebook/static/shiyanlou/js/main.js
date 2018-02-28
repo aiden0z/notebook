@@ -16,7 +16,7 @@ requirejs([
             codeCell = $('.code_cell');
             textCell = $('.text_cell');
 
-            if(codeCell.length > 0) {
+            if(codeCell.length > 0 || textCell.length > 0) {
 
                 clearInterval(interval);
 
@@ -65,8 +65,6 @@ requirejs([
                     }
 
                 });
-
-
                 //确保能获取到值后再调用
                 runCode(html,runCodeHtml);
                 addCell(html,runCodeHtml);
@@ -79,13 +77,16 @@ requirejs([
     }
 
     let downloadCode = `<div class="download-code">
-            <span>下载代码</span>
+            <i class="fa fa-download"></i>
         </div>`
 
     $('#modal_indicator').before(downloadCode);
 
-    getJupyterElement();
+    window.alert = function(str){
+        return ;
+    }
 
+    getJupyterElement();
 
     // 添加代码执行按钮
     function runCode(codeCellHtml,runCodeHtml) {
