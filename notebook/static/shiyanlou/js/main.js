@@ -22,21 +22,21 @@ requirejs([
 
                 let html = `<div class="code-tools">
                     <div class='tool-container'>
-                        <span class="markdown-btn">Markdown</span>
-                        <span class="code-btn">Code</span>
+                        <span class="markdown-btn" data-tooltip="markdown模式">Markdown</span>
+                        <span class="code-btn" data-tooltip="代码模式">Code</span>
                     </div>
                     <div class='tool-container add-cell'>
-                        <span class='add-cell-before'>
+                        <span class='add-cell-before' data-tooltip="向上添加代码块">
                             <i class='fa fa-plus'></i>
                             <i class='fa fa-caret-up'></i>
                         </span>
-                        <span class='add-cell-after'>
+                        <span class='add-cell-after' data-tooltip="向下添加代码块">
                             <i class='fa fa-plus'></i>
                             <i class='fa fa-caret-down'></i>
                         </span>
                     </div>
                     <div class='tool-container delete-cell'>
-                        <span class='delete-cell-btn'>
+                        <span class='delete-cell-btn' data-tooltip="删除">
                             <i class="fa fa-trash"></i>
                         </span>
                     </div>
@@ -71,21 +71,48 @@ requirejs([
                 deleteCell();
                 changeType(html);
                 downloadCodes();
+                addTooltip();
             }
         }, 300);
 
     }
 
-    let downloadCode = `<div class="download-code">
+    function addTooltip() {
+
+        $('.code-tools .tool-container span').on('mouseenter',function() {
+
+            let tooltipTitle = $(this).data('tooltip');
+            let html = `<div class='btn-tooltip'>${tooltipTitle}<div>`;
+            $(this).append(html);
+
+            let rightPx =  $(this).find('.btn-tooltip').width()/2 - $(this).width()/2;
+
+            $(this).find('.btn-tooltip').css({
+                right: - rightPx + 'px',
+            })
+
+        }).on('mouseleave',function() {
+
+            $(this).find('.btn-tooltip').remove();
+
+        })
+    }
+
+    function addRunCodeBtn() {
+
+        let downloadCode = `<div class="download-code">
             <i class="fa fa-download"></i>
         </div>`
 
-    $('#modal_indicator').before(downloadCode);
-
-    window.alert = function(str){
-        return ;
+        $('#modal_indicator').before(downloadCode);
     }
 
+    window.onbeforeunload = function (e) {
+
+        return false;
+    };
+
+    addRunCodeBtn();
     getJupyterElement();
 
     // 添加代码执行按钮
@@ -119,7 +146,6 @@ requirejs([
             $('#insert_cell_below').click();
 
             getJupyterElement();
-
 
         })
 
