@@ -107,10 +107,9 @@ requirejs([
         $('#modal_indicator').before(downloadCode);
     }
 
-    window.onbeforeunload = function (e) {
-
+    window.onbeforeunload = function(e) {
         return false;
-    };
+    }
 
     addRunCodeBtn();
     getJupyterElement();
@@ -185,7 +184,7 @@ requirejs([
 
         $('.download-code').off('click').on('click',function() {
 
-            $('#download_ipynb').click();
+            $('#download_script').click();
         })
     }
 })
