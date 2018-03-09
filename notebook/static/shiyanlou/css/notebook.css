@@ -38,10 +38,17 @@ body > #header .header-bar {
     display: none;
 }
 
+.container-fluid {
+    background-color: #fff;
+}
+
 #notification_trusted.notification_widget {
-    height: 25px;
-    background-color: #f8f8f8;
-    border-color: #f8f8f8;
+    height: 33px;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    border:none;
+    cursor: inherit;
 }
 
 #notification_trusted span{
@@ -125,9 +132,8 @@ div.code_cell .CodeMirror-cursor {
 #notebook div.code_cell,
 #notebook div.text_cell {
     position:relative;
-    margin-top: 15px;
+    margin-top: 20px;
 }
-
 
 #notebook div.code_cell .run-code-btn,
 #notebook div.text_cell .run-code-btn {
@@ -277,4 +283,8 @@ div.code_cell .CodeMirror-cursor {
 
 .rendered_html pre code {
     background-color: transparent;
+}
+
+.text_cell.rendered .rendered_html {
+    padding: 0;
 }

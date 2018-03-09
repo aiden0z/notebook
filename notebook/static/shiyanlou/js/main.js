@@ -121,6 +121,14 @@ requirejs([
 
             $('#run_cell_select_below').click();
 
+            $(this).hide();
+
+            let runCodeTime = null;
+            runCodeTime = setTimeout(() => {
+                clearTimeout(runCodeTime);
+                $(this).show();
+            },500)
+
             getJupyterElement();
 
         })
