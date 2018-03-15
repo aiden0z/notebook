@@ -94,32 +94,64 @@ div.text_cell .rendered_html {
     font-size: 90%;
 }
 
-.rendered_html code,
-.rendered_html pre {
+.rendered_html code{
     color: #c7254e;
     background-color: #f9f2f4;
 }
+.rendered_html pre {
+    background-color: #f9f2f4;
+    padding:0.5em;
+    border:1px solid #ccc;
+}
+
+.rendered_html pre code {
+    color: #000;
+    background-color: transparent;
+}
 
 /* 代码块keyword颜色 */
-.cm-s-ipython span.cm-keyword {
+.code_cell .cm-s-ipython span.cm-keyword {
     color: #f92672;
 }
 /* 代码块数字颜色 */
-.cm-s-ipython span.cm-number {
+.code_cell .cm-s-ipython span.cm-number {
     color: #ae81ff;
     font-weight: bold;
 }
 /* 代码块string颜色 */
-.cm-s-ipython span.cm-string {
+.code_cell .cm-s-ipython span.cm-string {
     color: #e6db74;
 }
 
-.cm-s-ipython span.cm-operator {
+.code_cell .cm-s-ipython span.cm-operator {
+    color: #f8f8f2;
+}
+
+.code_cell .cm-s-ipython span.cm-variable {
+    color: #f8f8f2;
+}
+
+.code_cell .cm-s-ipython span.cm-error {
+    color: #f8f8f2;
+}
+
+.code_cell .cm-s-ipython span.cm-def {
+    color: #a6e22e;
+    font-size: 16px;
+}
+
+.code_cell .cm-s-ipython span.cm-comment {
     color: #75715e;
+    font-style: italic;
 }
 
-.cm-s-ipython span.cm-variable {
-    color: #e6db74;
+
+.code_cell .cm-s-ipython span.cm-variable-2 {
+    color: #f8f8f2;
+}
+
+.code_cell .CodeMirror pre {
+    padding: 0.2em 0.4em;
 }
 
 /* 修改光标的颜色 */
@@ -279,10 +311,6 @@ div.code_cell .CodeMirror-cursor {
 
 #notification_area {
     float: left !important;
-}
-
-.rendered_html pre code {
-    background-color: transparent;
 }
 
 .text_cell.rendered .rendered_html {
