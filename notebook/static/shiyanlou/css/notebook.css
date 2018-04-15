@@ -6,7 +6,6 @@
 
 .notebook_app {
     overflow-y: hidden;
-    font-family: "Microsoft YaHei";
 }
 
 .notebook_app #header {
@@ -75,12 +74,12 @@ body > #header .header-bar {
     font-size: 16px;
     background: #000;
     color: #fff;
-    line-height: 2em;
+    line-height: 1em;
 }
 
 div.text_cell .inner_cell {
     font-size: 16px;
-    line-height: 2em;
+    line-height: 1.5em;
 }
 
 div.text_cell .rendered_html {
@@ -171,7 +170,7 @@ div.code_cell .CodeMirror-cursor {
 #notebook div.text_cell .run-code-btn {
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 2px;
     width: 80px;
     height: 40px;
     line-height: 40px;

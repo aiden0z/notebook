@@ -1,8 +1,6 @@
 requirejs([
-    'jquery',
-], function(
-    $,
-){
+    'jquery'
+], function ($) {
     "use strict";
 
     //添加代码块的工具栏
@@ -11,12 +9,12 @@ requirejs([
         let codeCell = null;
         let textCell = null;
 
-        let interval = setInterval(()=>{
+        let interval = setInterval(() => {
 
             codeCell = $('.code_cell');
             textCell = $('.text_cell');
 
-            if(codeCell.length > 0 || textCell.length > 0) {
+            if (codeCell.length > 0 || textCell.length > 0) {
 
                 clearInterval(interval);
 
@@ -46,28 +44,28 @@ requirejs([
                         <i class='fa fa-play'></i>
                     </div>`
 
-                codeCell.each( function(element, index) {
+                codeCell.each(function (element, index) {
 
-                    if($(this).find('.input').find('.run-code-btn').length <= 0) {
+                    if ($(this).find('.input').find('.run-code-btn').length <= 0) {
                         $(this).find('.input').append(runCodeHtml);
                     }
 
-                    if($(this).find('.code-tools').length <= 0 ) {
+                    if ($(this).find('.code-tools').length <= 0) {
                         $(this).append(html);
                     }
 
                 });
 
-                textCell.each( function(element, index) {
+                textCell.each(function (element, index) {
 
-                    if($(this).find('.code-tools').length <= 0 ) {
+                    if ($(this).find('.code-tools').length <= 0) {
                         $(this).append(html);
                     }
 
                 });
                 //确保能获取到值后再调用
-                runCode(html,runCodeHtml);
-                addCell(html,runCodeHtml);
+                runCode(html, runCodeHtml);
+                addCell(html, runCodeHtml);
                 deleteCell();
                 changeType(html);
                 downloadCodes();
@@ -79,19 +77,19 @@ requirejs([
 
     function addTooltip() {
 
-        $('.code-tools .tool-container span').on('mouseenter',function() {
+        $('.code-tools .tool-container span').on('mouseenter', function () {
 
             let tooltipTitle = $(this).data('tooltip');
             let html = `<div class='btn-tooltip'>${tooltipTitle}<div>`;
             $(this).append(html);
 
-            let rightPx =  $(this).find('.btn-tooltip').width()/2 - $(this).width()/2;
+            let rightPx = $(this).find('.btn-tooltip').width() / 2 - $(this).width() / 2;
 
             $(this).find('.btn-tooltip').css({
                 right: - rightPx + 'px',
             })
 
-        }).on('mouseleave',function() {
+        }).on('mouseleave', function () {
 
             $(this).find('.btn-tooltip').remove();
 
@@ -107,7 +105,7 @@ requirejs([
         $('#modal_indicator').before(downloadCode);
     }
 
-    window.onbeforeunload = function(e) {
+    window.onbeforeunload = function (e) {
         return false;
     }
 
@@ -115,9 +113,9 @@ requirejs([
     getJupyterElement();
 
     // 添加代码执行按钮
-    function runCode(codeCellHtml,runCodeHtml) {
+    function runCode(codeCellHtml, runCodeHtml) {
 
-        $('.run-code-btn').off('click').on('click',function () {
+        $('.run-code-btn').off('click').on('click', function () {
 
             $('#run_cell_select_below').click();
 
@@ -127,7 +125,7 @@ requirejs([
             runCodeTime = setTimeout(() => {
                 clearTimeout(runCodeTime);
                 $(this).show();
-            },500)
+            }, 500)
 
             getJupyterElement();
 
@@ -135,10 +133,10 @@ requirejs([
     }
 
     //add text_cell or code_cell
-    function addCell(codeCellHtml,runCodeHtml) {
+    function addCell(codeCellHtml, runCodeHtml) {
 
 
-        $('.add-cell-before').off('click').on('click',function(e) {
+        $('.add-cell-before').off('click').on('click', function (e) {
             e.stopPropagation();
 
             $('#insert_cell_above').click();
@@ -147,7 +145,7 @@ requirejs([
 
         })
 
-        $('.add-cell-after').off('click').on('click',function(e) {
+        $('.add-cell-after').off('click').on('click', function (e) {
             e.stopPropagation();
 
             $('#insert_cell_below').click();
@@ -162,7 +160,7 @@ requirejs([
     // delete code_cell or text_cell
     function deleteCell() {
 
-        $('.delete-cell-btn').off('click').on('click',function() {
+        $('.delete-cell-btn').off('click').on('click', function () {
 
             $('#delete_cell').click();
 
@@ -174,13 +172,13 @@ requirejs([
 
     //change type of cell, MarkDown or Code
     function changeType(codeCellHtml) {
-        $('.markdown-btn').off('click').on('click', function() {
+        $('.markdown-btn').off('click').on('click', function () {
             $('#to_markdown').click();
             getJupyterElement();
 
         })
 
-        $('.code-btn').off('click').on('click', function() {
+        $('.code-btn').off('click').on('click', function () {
 
             $('#to_code').click();
             getJupyterElement();
@@ -190,7 +188,7 @@ requirejs([
 
     function downloadCodes() {
 
-        $('.download-code').off('click').on('click',function() {
+        $('.download-code').off('click').on('click', function () {
 
             $('#download_script').click();
         })
