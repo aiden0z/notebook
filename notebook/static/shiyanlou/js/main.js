@@ -70,6 +70,7 @@ requirejs([
                 changeType(html);
                 downloadCodes();
                 addTooltip();
+                postInputMessage();
             }
         }, 300);
 
@@ -191,6 +192,13 @@ requirejs([
         $('.download-code').off('click').on('click', function () {
 
             $('#download_script').click();
+        })
+    }
+
+    function postInputMessage() {
+        // 传送消息给父级窗口，以记录学习时间
+        window.addEventListener('input', function(e) {
+            window.parent.postMessage('KeyboardInput', '*')
         })
     }
 })
