@@ -191,7 +191,7 @@ requirejs([
 
         $('.download-code').off('click').on('click', function () {
 
-            $('#download_script').click();
+            $('#download_script a').click();
         })
     }
 
