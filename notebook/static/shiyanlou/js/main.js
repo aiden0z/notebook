@@ -68,7 +68,7 @@ requirejs([
                 addCell(html, runCodeHtml);
                 deleteCell();
                 changeType(html);
-                downloadCodes();
+                // downloadCodes();
                 addTooltip();
                 postInputMessage();
             }
@@ -110,7 +110,7 @@ requirejs([
         return false;
     }
 
-    addRunCodeBtn();
+    // addRunCodeBtn();
     getJupyterElement();
 
     // 添加代码执行按钮
