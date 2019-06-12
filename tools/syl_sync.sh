@@ -18,9 +18,9 @@ if [[ ! -f ${SRC_JS} ]]; then
 fi
 
 # force sync css
-qshell fput $1 jupyter/shiyanlou-notebook.css ${SRC_CSS} true
+qshell fput -w $1 jupyter/shiyanlou-notebook.css ${SRC_CSS}
 # force sync javascript
-qshell fput $1 jupyter/shiyanlou-notebook.js ${SRC_JS} true
+qshell fput -w $1 jupyter/shiyanlou-notebook.js ${SRC_JS}
 
 REFRESH_DIR_FILE=$(mktemp)
 cat >  ${REFRESH_DIR_FILE} <<EOL
@@ -28,6 +28,6 @@ https://static.shiyanlou.com/jupyter/
 EOL
 
 # refresh cdn url
-qshell cdnrefresh -dirs ${REFRESH_DIR_FILE}
+qshell cdnrefresh -r -i ${REFRESH_DIR_FILE}
 
 rm -rf $REFRESH_DIR_FILE
