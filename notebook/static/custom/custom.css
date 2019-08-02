@@ -19,7 +19,3 @@ This will always be an empty file in IPython
 [dir="rtl"] .fa-step-forward::before {
   content: "\f048";
 }
-
-#kernel_indicator {
-  border: none;
-}

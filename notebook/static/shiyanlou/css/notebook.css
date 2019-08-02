@@ -55,7 +55,6 @@ body > #header .header-bar {
 }
 
 .download-code {
-    display:inline-block;
     float: right;
     margin: 3px 5px;
     padding: 0 10px;
@@ -314,4 +313,42 @@ div.code_cell .CodeMirror-cursor {
 
 .text_cell.rendered .rendered_html {
     padding: 0;
+}
+
+.notebook_app #header {
+    box-shadow: none;
+    border: none;
+}
+
+#kernel_indicator {
+  border: none;
+}
+
+#menubar-container {
+    overflow: hidden;
+}
+#menubar {
+    float: right;
+}
+#maintoolbar {
+    display: block;
+    float: left;
+    width: 30px;
+}
+#maintoolbar-container .btn-group,
+#maintoolbar-container #cell_type {
+    display: none;
+}
+#maintoolbar-container #run_int {
+    display: block;
+}
+#maintoolbar-container #run_int .btn {
+    display: none;
+}
+#maintoolbar-container #run_int .btn[data-jupyter-action="jupyter-notebook:interrupt-kernel"] {
+    display: block;
+    border-left: solid 2px #ccc;
+}
+#maintoolbar-container #run_int .btn[data-jupyter-action="jupyter-notebook:confirm-restart-kernel"] {
+    display: block;
 }
